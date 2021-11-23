@@ -1,0 +1,15 @@
+.gameGrid {
+    width: 200px;
+    height: 400px;
+    background-color: olivedrab;
+    display: flex;
+    display: -webkit-flex;
+    flex-wrap: wrap;
+}
+
+.tile {
+    width: 18px;
+    height: 18px;
+    background-color: blueviolet;
+    border: 1px solid black;
+}
