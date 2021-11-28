@@ -5,4 +5,11 @@ window.onload = () => {
         tile.setAttribute('class', 'tile');
         document.querySelector(".gameGrid").appendChild(tile);
     }
+
+    const tileWidth = 20;
+    const tileHeight = 20;
+    let tiles = Array.from(document.querySelectorAll(".tile"));
+    const scoreDisplay = document.querySelectorAll("#scoreDisplay");
+    const startStopButton = document.querySelectorAll("#startStopButton");
+
 }

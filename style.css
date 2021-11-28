@@ -13,3 +13,21 @@
     background-color: blueviolet;
     border: 1px solid black;
 }
+
+#gameScreen {
+    display: flex;
+    display: -webkit-flex;
+}
+
+.gameInfo {
+    margin-left: 20px;
+}
+
+#startStopButton {
+    padding: 1rem 1.5rem;
+    background-color: cornflowerblue;
+    border-radius: 5px;
+    color: white;
+    font-weight: 700;
+    font-size: 1.2rem;
+}

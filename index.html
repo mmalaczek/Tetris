@@ -2,12 +2,19 @@
 <html lang="pl">
 <head>
     <title>Tetris</title>
+    <meta content="text/html" charset="utf-8" http-equiv="Content-Type"/>
+    <meta content="utf-8" http-equiv="encoding" />
     <link rel="stylesheet" href="./style.css">
 </head>
 <body>
-    <div class="gameGrid">
-        <div class='tile'></div>
-        <div class='tile'></div>
+    <div id="gameScreen">
+        <div class="gameGrid">
+            <!-- TILES GENERATED WITH JS -->
+        </div>
+        <div class="gameInfo">
+            <button id="startStopButton">Gra/Pauza</button>
+            <h3>Wynik: <span id="scoreDisplay">0</span></h3>
+        </div>
     </div>
     <script src="./main.js"></script>
 </body>
