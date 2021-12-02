@@ -62,13 +62,13 @@ window.onload = () => {
 
     const draw = () => {
         currentBlock.forEach((el) => {
-            tiles[currentPosition+ el].classList.add('tetrimino');
+            tiles[currentPosition + el].classList.add('tetrimino');
         })
     }
 
     const undraw = () => {
         currentBlock.forEach((el) => {
-            tiles[currentPosition+ el].classList.remove('tetrimino');
+            tiles[currentPosition + el].classList.remove('tetrimino');
         })
     }
 
@@ -80,15 +80,29 @@ window.onload = () => {
     }
 
     const freeze = () => {
-        if (currentBlock.some(el => tiles[currentPosition+ el + gridWidth].classList.contains('taken'))) {
+        if (currentBlock.some(el => tiles[currentPosition + el + gridWidth].classList.contains('taken'))) {
             currentBlock.forEach((el) => {
-                tiles[currentPosition+ el].classList.add('taken');
+                tiles[currentPosition + el].classList.add('taken');
             });
             randomTetrimino = Math.floor(Math.random() * theTetriminos.length);
             currentBlock = theTetriminos[randomTetrimino][currentRotation];
             currentPosition = 4;
             draw();
         }
+    }
+
+    const moveLeft = () => {
+        undraw();
+        const isAtLeftEdge = currentBlock.some(el => (currentBlock + el) % gridWidth === 0)
+
+        if (!isAtLeftEdge) {
+            currentPosition -= 1;
+        }
+
+        if (currentBlock.some(el => tiles[currentPosition + el].classList.contains('taken'))) {
+            currentPosition += 1;
+        }
+        draw();
     }
 
     // GAME LOGIC BELOW
