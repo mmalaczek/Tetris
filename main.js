@@ -93,8 +93,7 @@ window.onload = () => {
 
     const moveLeft = () => {
         undraw();
-        const isAtLeftEdge = currentBlock.some(el => (currentBlock + el) % gridWidth === 0)
-
+        const isAtLeftEdge = currentBlock.some(el => (currentPosition + el) % gridWidth === 0)
         if (!isAtLeftEdge) {
             currentPosition -= 1;
         }
@@ -105,7 +104,48 @@ window.onload = () => {
         draw();
     }
 
+    const moveRight = () => {
+        undraw();
+        const isAtLeftEdge = currentBlock.some(el => (currentPosition + el) % gridWidth === gridWidth - 1)
+        if (!isAtLeftEdge) {
+            currentPosition += 1;
+        }
+
+        if (currentBlock.some(el => tiles[currentPosition + el].classList.contains('taken'))) {
+            currentPosition -= 1;
+        }
+        draw();
+    }
+    const rotate = () => {
+        undraw();
+        currentRotation++;
+        if (currentRotation === currentBlock.length) {
+            currentRotation = 0;
+        }
+        currentBlock = theTetriminos[randomTetrimino][currentRotation];
+        draw();
+    }
+
+    const control = (e) => {
+        if (e.keyCode === 37) {
+            moveLeft();
+        }
+
+        if (e.keyCode === 38) {
+            rotate();
+        }
+
+        if (e.keyCode === 39) {
+            moveRight();
+        }
+
+        if (e.keyCode === 40) {
+            moveDown();
+        }
+    }
+
     // GAME LOGIC BELOW
+    document.addEventListener('keyup', control);
     draw();
 
     let timerId = setInterval(moveDown, 1000);
