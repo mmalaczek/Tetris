@@ -73,9 +73,9 @@ window.onload = () => {
     ];
 
     const theTetriminos = [lTetrimino, sTetrimino, tTetrimino, oTetrimino, iTetrimino];
-    // const colors = [
-    //     '#ff0000', '#00a8f1', '#ebff00', '#fc00ee', '#aaaaaa'
-    // ];
+    const colors = [
+        '#ff0000', '#00a8f1', '#ebff00', '#fc00ee', '#aaaaaa'
+    ];
 
     let currentPosition = 4;
     let randomTetrimino = Math.floor(Math.random() * theTetriminos.length);
@@ -85,14 +85,14 @@ window.onload = () => {
     const draw = () => {
         currentBlock.forEach((el) => {
             tiles[currentPosition + el].classList.add('tetrimino');
-            // tiles[currentPosition + el].style.backgroundColor = colors[randomTetrimino];
+            tiles[currentPosition + el].style.backgroundColor = colors[randomTetrimino];
         })
     }
 
     const undraw = () => {
         currentBlock.forEach((el) => {
             tiles[currentPosition + el].classList.remove('tetrimino');
-            // tiles[currentPosition + el].style.backgroundColor = '';
+            tiles[currentPosition + el].style.backgroundColor = '';
         })
     }
 
@@ -106,11 +106,11 @@ window.onload = () => {
     const upNextDisplay = () => {
         upNext.forEach(el => {
             el.classList.remove('tetrimino');
-            // el.style.backgroundColor = '';
+            el.style.backgroundColor = '';
         });
         upNextTetriminos[nextRandom].forEach(el => {
             upNext[el].classList.add('tetrimino');
-            // upNext[el].style.backgroundColor = colors[nextRandom];
+            upNext[el].style.backgroundColor = colors[nextRandom];
         });
     }
 
@@ -195,7 +195,7 @@ window.onload = () => {
                 row.forEach(el => {
                     tiles[el].classList.remove('taken');
                     tiles[el].classList.remove('tetrimino');
-                    // tiles[el].style.backgroundColor = '';
+                    tiles[el].style.backgroundColor = '';
                 })
 
                 const tilesRemoved = tiles.splice(i, gridWidth);
