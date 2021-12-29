@@ -126,6 +126,7 @@ window.onload = () => {
             draw();
             upNextDisplay();
             addScore();
+            gameOver();
         }
     }
 
@@ -206,13 +207,30 @@ window.onload = () => {
         }
     }
 
+    const gameOver = () => {
+        if (currentBlock.some(el => tiles[currentPosition + el].classList.contains('taken'))) {
+            document.removeEventListener('keyup', control);
+            timerId = null;
+            document.querySelector("#endGameText").setAttribute("style", "visibility: visible");
+        }
+    }
+
     // GAME LOGIC BELOW
+    document.querySelector("#endGameText").setAttribute("style", "visibility: hidden");
     startButton.addEventListener('click', (e) => {
         if (timerId) {
             clearInterval(timerId);
             document.removeEventListener('keyup', control);
             timerId = null;
         } else {
+            tiles.forEach((el, i) => {
+                if (i < 199) {
+                    el.classList.remove('tetrimino');
+                    el.classList.remove('taken');
+                }
+            });
+            score = 0;
+            document.querySelector("#endGameText").setAttribute("style", "visibility: hidden");
             document.addEventListener('keyup', control);
             draw();
             timerId = setInterval(moveDown, 1000);
